@@ -22,3 +22,5 @@
 
 .byebug_history
 log*
+
+.DS_Store
