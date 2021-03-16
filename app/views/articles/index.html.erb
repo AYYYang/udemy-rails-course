@@ -1,27 +1,11 @@
 <h1>This is the Articles catalog page</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Description</th>
-      <th colspan = "3">Actions</th>
-    </tr>
-  </thead>
-  
-  <tbody>
-    <% @articles.each do |a| %>
-      <tr>
-        <td><%= a.title %></td>
-        <td><%= a.user.username if a.user %></td>
-        <td><%= a.description %></td>
-        <td><%= link_to "Show", article_path(a), method: :get %></td>
-        <td><%= link_to "Edit", edit_article_path(a), method: :get %></td>
-        <td><%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure?" } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="flickr_pagination">
+  <%= will_paginate @articles, :container => false %>
+</div>
 
-<%= link_to "New article", new_article_path, method: :get %>
+<%= render "article" %>
+
+<div class="flickr_pagination mb-4">
+  <%= will_paginate @articles, :container => false %>
+</div>

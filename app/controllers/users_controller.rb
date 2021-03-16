@@ -21,10 +21,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notiece] = "Your account information was successfully updated."
-      redirect_to articles_path
+      redirect_to user_path
     else
-      render 'edit'
+      render "edit"
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    if @user
+      @articles = @user.articles.paginate(page: params[:page], per_page: 5)
+    end
+  end
+
+  def index
+    @users = User.all
   end
 
   private

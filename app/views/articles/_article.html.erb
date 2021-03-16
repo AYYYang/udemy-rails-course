@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th colspan = "3">Actions</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @articles.each do |a| %>
+      <tr>
+        <td><%= a.title %></td>
+        <td>
+          <% if a.user %>
+          <%= link_to a.user.username, user_path(a.user), method: :get %>
+          <% end %>
+        </td>
+        <td><%= a.description %></td>
+        <td><%= link_to "Show", article_path(a), method: :get %></td>
+        <td><%= link_to "Edit", edit_article_path(a), method: :get %></td>
+        <td><%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
