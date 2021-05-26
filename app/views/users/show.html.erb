@@ -8,7 +8,9 @@
 
 <%= render "articles/article" %>
 <div class="text-center mt-4">
-  <td><%= link_to "Edit profile", edit_user_path(@user), method: :get %></td>
+  <% if logged_in? && @user == current_user %>
+    <td><%= link_to "Edit profile", edit_user_path(@user), method: :get %></td>
+  <% end %>
 </div>
 
 <%= link_to "Back to Home", root_path, method: :get %>

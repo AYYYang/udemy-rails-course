@@ -19,11 +19,13 @@
         </td>
         <td><%= a.description %></td>
         <td><%= link_to "Show", article_path(a), method: :get %></td>
-        <td><%= link_to "Edit", edit_article_path(a), method: :get %></td>
-        <td><%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <% if logged_in? && a.user == current_user %>
+          <td><%= link_to "Edit", edit_article_path(a), method: :get %></td>
+          <td><%= link_to "Delete", article_path(a), method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
+<%= link_to "Create new article", new_article_path, method: :get%>
 <%= link_to "Home page", root_path, method: :get%>
