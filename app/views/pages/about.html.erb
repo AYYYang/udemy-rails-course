@@ -2,3 +2,10 @@
 
 <%= link_to "Articles", articles_path, method: :get%>
 <%= link_to "Home page", root_path, method: :get%>
+
+<%# temporary code %>
+<% if logged_in? %>
+  <%= link_to "Log out", logout_path, method: :delete %>
+  <% else %>
+  <%= link_to "Log in", login_path, method: :get %>
+<%end%>
